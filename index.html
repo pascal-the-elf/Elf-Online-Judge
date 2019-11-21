@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta content="viewport-fit=cover, width=device-width, initial-scale=1" name="viewport">
+    <meta content="" name="description">
+    <link href="" rel="icon" type="image/ico">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <title>Github Judge WebUI</title>
+
+    <style>
+    #loading-barrier {
+        z-index: 99999;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: white;
+        transition: opacity 0.4s, z-index 0.4s;
+    }
+    </style>
+</head>
+<body>
+    <div id="loading-barrier"></div>
+    <div id="black-barrier"></div>
+    <div id="side-bar" class="w3-sidebar w3-bar-block">
+        <a href="./" class="w3-bar-item w3-button">
+            <svg viewBox="0 0 24 24"><path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"/></svg><b>Homepage</b>
+        </a>
+        <a href="./Submit" class="w3-bar-item w3-button">
+            <svg viewBox="0 0 24 24"><path d="M9,16V10H5L12,3L19,10H15V16H9M5,20V18H19V20H5Z"/></svg><b>Submit</b>
+        </a>
+        <a href="./Status" class="w3-bar-item w3-button">
+            <svg viewBox="0 0 24 24"><path d="M3,22V8H7V22H3M10,22V2H14V22H10M17,22V14H21V22H17Z"/></svg><b>Status</b>
+        </a>
+    </div>
+    <div id="top-bar" class="w3-bar">
+        <a class="w3-bar-item" href="javascript:sidebar()"><span class="mdi mdi-menu"></span></a>
+    </div>
+    <div class="content w3-container">
+        <div class="w3-center" style="width: 100%; min-height: 80vh">
+            <br><br>
+            <h1>Github Judge</h1>
+        </div>
+    </div>
+    <div id="end-page">
+        <p>Copyright © 2019 PascalTheElf</p>
+    </div>
+
+    <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet">
+    <style>
+    * {
+        font-family: Verdana, '微軟正黑體', 'Microsoft JhengHei', 'PingFang', sans-serif !important;
+        letter-spacing: 1px  !important;
+    }
+    html {
+        background-color: snow;
+    }
+    html, body {
+        height: 100%;
+    }
+    #black-barrier {
+        z-index: -1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: rgba(0,0,0);
+        opacity: 0;
+        transition: opacity 0.3s, z-index 0.3s;
+    }
+    #side-bar {
+        z-index: 10;
+        position: fixed;
+        top: 0;
+        left: -180px;
+        width: 180px;
+        transition: left 0.3s;
+    }
+    #top-bar {
+        z-index: 2;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3rem;
+        width: 100vw;
+        color: black;
+        transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    }
+    #top-bar > a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        font-size: 1.2rem;
+        text-decoration: none;
+    }
+    #top-bar > a > .mdi-menu {
+        font-size: 1.7rem;
+    }
+    .login {
+        position: absolute;
+        bottom: 0;
+    }
+    .content {
+        min-height: 100%;
+        width: 100vw;
+    }
+    #end-page {
+        display: block;
+        height: 3rem;
+        width: 100vw;
+        text-align: center;
+    }
+    </style>
+    <script>
+    // simplify
+    var doc = document;
+    doc.id = function(id) {return doc.getElementById(id);};
+    doc.class = function(cls) {return doc.getElementsByClassName(cls);};
+    doc.tag = function(tag) {return doc.getElementsByTagName(tag);};
+    doc.create = function(elm) {return doc.createElement(elm);};
+    window.addEventListener("pageshow", () => {
+        setTimeout(() => {
+            doc.id("loading-barrier").style.opacity = "0";
+            doc.id("loading-barrier").style.zIndex = "-1";
+        }, 100);
+    });
+    </script>
+    <script src="https://instant.page/3.0.0" defer type="module"></script>
+</body>
+</html>
