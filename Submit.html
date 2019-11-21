@@ -49,9 +49,12 @@
                     <textarea class="form-control" id="source_code" style="min-height: 60vh;"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="source_code_file">or Upload</label>
-                    <input type="file" class="form-control-file" id="source_code_file" aria-describedby="fileHelp">
-                    <small id="fileHelp" class="form-text text-muted">Upload Your Source Code.</small>
+                <div class="input-group mb-3">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="source_code_file">
+                        <label class="custom-file-label" for="source_code_file">Choose file</label>
+                        <small id="fileHelp" class="form-text text-muted">Upload Your Source Code.</small>
+                    </div>
                 </div>
                 <button type="button" class="btn btn-primary">Submit</button>
             </fieldset>
