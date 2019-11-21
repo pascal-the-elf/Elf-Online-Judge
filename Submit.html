@@ -129,6 +129,18 @@
             doc.id("loading-barrier").style.zIndex = "-1";
         }, 100);
     });
+    function sidebar() {
+        if(doc.id("side-bar").style.left && doc.id("side-bar").style.left != "-180px") {
+            doc.id("side-bar").style.left = "-180px";
+            doc.id("black-barrier").style.opacity = "0";
+            doc.id("black-barrier").style.zIndex = "-1";
+        }
+        else {
+            doc.id("side-bar").style.left = "0px";
+            doc.id("black-barrier").style.opacity = "0.5";
+            doc.id("black-barrier").style.zIndex = "5";
+        }
+    }
     </script>
     <script src="https://instant.page/3.0.0" defer type="module"></script>
 </body>
