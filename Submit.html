@@ -57,7 +57,7 @@
                 <div class="form-group">
                     <div class="input-group mb-3">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="source_code_file" aria-describedby="fileHelp">
+                            <input type="file" class="custom-file-input" id="source_code_file" aria-describedby="fileHelp" onchange="read_source_code(this.files[0])">
                             <label class="custom-file-label" for="source_code_file">Choose file</label>
                             <small id="fileHelp" class="form-text text-muted">Upload Your Source Code.</small>
                         </div>
@@ -69,7 +69,34 @@
     </div>
     
     <script>
-        
+        function read_source_code(file) {
+            reader(file)
+            .then(code => {
+                document.getElementById("source_code").value = code;
+            });
+        }
+        function reader(file) {
+            return new Promise(function (resolve, reject) {
+                let reader = new FileReader();
+                
+                reader.onload = function () {
+                    resolve(reader.result);
+                };
+                reader.onerror = reject;
+                
+                let ext = "";
+                for(var i = file.name.length - 1; i >= 0; i--) {
+                    if(file.name[i] != ".") ext = file.name[i] + ext;
+                    else break;
+                }
+                
+                if (ext == "cpp" || ext == "c") {
+                    reader.readAsText(file);
+                } else {
+                    reject;
+                }
+            });
+        }
     </script>
 </body>
 </html>
