@@ -48,7 +48,7 @@
             <fieldset>
                 <legend>Submit and Judge Your Code</legend>
                 <div class="form-group">
-                    <label for="db_owner">Problem</label>
+                    <label for="problem">Problem</label>
                     <input type="text" class="form-control" id="problem" aria-describedby="problem_des" placeholder="a001">
                     <small id="problem_des" class="form-text text-muted">Problem Prefix and ID</small>
                 </div>
@@ -83,12 +83,20 @@
     <script>
         function submit() {
             document.getElementById("submit").disabled = true;
+            var problem_string = document.getElementById("problem").value, prefix = "", id = "";
+            for(var i = 0; i < problem_string.length; i++) {
+                if([0,1,2,3,4,5,6,7,8,9].includes(problem_string[i])) {
+                    prefix = problem_string.substr(0, i);
+                    id = problem_string.substr(i);
+                    break;
+                }
+            }
             var data = {
                 problem: {
                     owner: "pascal-the-elf",
                     database: "Github-Judge-Database",
-                    prefix: "a",
-                    id: "001"
+                    prefix: prefix,
+                    id: id
                 },
                 code: document.getElementById("source_code").value
             };
