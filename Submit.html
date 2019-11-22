@@ -37,7 +37,12 @@
             </div>
         </div>
     </nav>
-    
+    <div id="alerts">
+        <div hidden="true" class="alert alert-dismissible alert-success" id="msg_success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Submit Successfully!</strong> Your Code Will Be Judged Soon. <a href="./Status" class="alert-link">Status Page</a>
+        </div>
+    </div>
     <div style="width: 100%; padding: 16px;">
         <div>
             <fieldset>
@@ -63,12 +68,37 @@
                         </div>
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-primary" id="submit" onclick="submit()">Submit</button>
             </fieldset>
         </div>
     </div>
     
+    <style>
+        #alerts {
+            position: fixed;
+            top: 32px;
+            right: 32px;
+        }
+    </style>
     <script>
+        function submit() {
+            document.getElementById("submit").disabled = true;
+            var data = {
+                problem: {
+                    owner: "pascal-the-elf",
+                    database: "Github-Judge-Database",
+                    prefix: "a",
+                    id: "001"
+                },
+                code: document.getElementById("source_code").value
+            };
+            
+            fetch("https://judge.pascaltheelf.workers.dev/", {
+                method: "POST",
+                body: JSON.stringify(data)
+            }).then(r => r.json()).then(() => {location.href="./Status"});
+            document.getElementById("msg_success").hidden = false;
+        }
         function read_source_code(file) {
             reader(file)
             .then(code => {
