@@ -100,13 +100,12 @@
                 },
                 code: document.getElementById("source_code").value
             };
-            alert(JSON.stringify(data.problem));
-            return;
+            
             fetch("https://judge.pascaltheelf.workers.dev/", {
                 method: "POST",
                 body: JSON.stringify(data)
             }).then(r => r.json()).then(() => {location.href="./Status"});
-            document.getElementById("msg_success").hidden = false;
+            setTimeout(() => {document.getElementById("msg_success").hidden = false;}, 800);
         }
         function read_source_code(file) {
             reader(file)
