@@ -100,7 +100,8 @@
                 },
                 code: document.getElementById("source_code").value
             };
-            
+            alert(JSON.stringify(data.problem));
+            return;
             fetch("https://judge.pascaltheelf.workers.dev/", {
                 method: "POST",
                 body: JSON.stringify(data)
