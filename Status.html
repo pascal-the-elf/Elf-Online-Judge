@@ -81,7 +81,7 @@
         submissions.orderBy("timestamp", "desc").limit(10).onSnapshot(qs => {
             qs.forEach(doc => {
                 let data = doc.data();
-                data.id = doc.id();
+                data.id = doc.id;
                 addRow(data);
             });
             document.getElementById("loading_submissions").style.display = "none";
