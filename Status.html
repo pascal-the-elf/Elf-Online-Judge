@@ -79,12 +79,12 @@
     </div>
     <script>
         submissions.orderBy("timestamp", "desc").limit(10).onSnapshot(qs => {
+            document.getElementById("submissions").innerHTML = "";
             qs.forEach(doc => {
                 let data = doc.data();
                 data.id = doc.id;
                 addRow(data);
             });
-            document.getElementById("loading_submissions").style.display = "none";
         });
         function addRow(data) {
             var tr = document.createElement("tr");
@@ -95,7 +95,12 @@
             id.scope = "row";
             id.innerHTML = data.id;
             problem.innerHTML = data.problem_prefix + data.problem_id;
-            result.innerHTML = "<b>" + data.result + "</b> (score: " + data.score + ")";
+            if(data.status == "judged") {
+                result.innerHTML = "<b>" + data.result + "</b> (score: " + data.score + ")";
+            }
+            else {
+                result.innerHTML = "<b>Pending...</b>";
+            }
             time.innerHTML = data.timestamp.toDate().toLocaleString();
             tr.appendChild(id);
             tr.appendChild(problem);
