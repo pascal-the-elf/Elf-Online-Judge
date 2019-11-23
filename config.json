@@ -1,3 +1,6 @@
 {
-  
+  "database": {
+    "owner": "pascal-the-elf",
+    "database": "Github-Judge-Database"
+  }
 }
