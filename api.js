@@ -1,8 +1,5 @@
-config().then(init).catch(console.error);
-
-function init() {
-    
-}
+if(!init) init = function() {};
+// config().then(init).catch(console.error);
 
 function ls(key = null, val = null) {
     if(key === null && val === null) {
