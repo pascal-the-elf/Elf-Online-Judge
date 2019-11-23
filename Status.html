@@ -29,6 +29,7 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         var db = firebase.firestore();
+        var submissions = db.collection("submissions");
     </script>
 </head>
 <body>
@@ -56,6 +57,15 @@
             </form>
         </div>
     </nav>
-    <script></script>
+    <script>
+        submissions.orderBy("timestamp", "desc").limit(10).onSnapshot(qs => {
+            qs.forEach(doc => {
+                let data = doc.data();
+            });
+        });
+        function addRow(data) {
+            
+        }
+    </script>
 </body>
 </html>
