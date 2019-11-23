@@ -96,6 +96,22 @@
             id.innerHTML = data.id;
             problem.innerHTML = data.problem_prefix + data.problem_id;
             if(data.status == "judged") {
+                switch(data.result) {
+                    case "AC":
+                        data.result = '<span class="text-success">' + data.result + '</span>';
+                        break;
+                    case "WA":
+                        data.result = '<span class="text-danger">' + data.result + '</span>';
+                        break;
+                    case "NA":
+                    case "TLE":
+                    case "MLE":
+                        data.result = '<span class="text-info">' + data.result + '</span>';
+                        break;
+                    case "CE":
+                        data.result = '<span class="text-warning">' + data.result + '</span>';
+                        break;
+                }
                 result.innerHTML = "<b>" + data.result + "</b> (score: " + data.score + ")";
             }
             else {
