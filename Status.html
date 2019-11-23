@@ -57,14 +57,51 @@
             </form>
         </div>
     </nav>
+    <div style="width: 100%; padding: 16px;">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Problem</th>
+                    <th scope="col">Result</th>
+                    <th scope="col">Time</th>
+                </tr>
+             </thead>
+            <tbody id="submissions">
+                <tr id="loading_submissions">
+                    <td scope="row">Loading...</td>
+                    <td>Loading...</td>
+                    <th>Loading...</th>
+                    <td>Loading...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <script>
         submissions.orderBy("timestamp", "desc").limit(10).onSnapshot(qs => {
             qs.forEach(doc => {
                 let data = doc.data();
+                data.id = doc.id();
+                addRow(data);
             });
+            document.getElementById("loading_submissions").style.display = "none";
         });
         function addRow(data) {
-            
+            var tr = document.createElement("tr");
+            var id = document.createElement("td");
+            var problem = document.createElement("td");
+            var result = document.createElement("td");
+            var time = document.createElement("td");
+            id.scope = "row";
+            id.innerHTML = data.id;
+            problem.innerHTML = data.problem_prefix + data.problem_id;
+            result.innerHTML = "<b>" + data.result + "</b> (score: " + data.score + ")";
+            time.innerHTML = data.timestamp.toDate().toLocaleString();
+            tr.appendChild(id);
+            tr.appendChild(problem);
+            tr.appendChild(result);
+            tr.appendChild(time);
+            document.getElementById("submissions").appendChild(tr);
         }
     </script>
 </body>
