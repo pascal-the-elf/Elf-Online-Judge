@@ -34,6 +34,7 @@ async function config(conf = "./config.json") {
 }
 
 async function list_problem() {
-    var list = await fetch("https://raw.githubusercontent.com/"+judge.database.owner+"/"+judge.database.database+"/master/list.json");
+    var list = await fetch("https://raw.githubusercontent.com/"+judge.database.owner+"/"+judge.database.database+"/master/list.json")
+        .then(r=>r.json());
     return list;
 }
