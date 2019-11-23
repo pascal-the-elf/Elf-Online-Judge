@@ -93,7 +93,7 @@
             var result = document.createElement("td");
             var time = document.createElement("td");
             id.scope = "row";
-            id.innerHTML = data.id;
+            id.innerHTML = data.id.substr(0, 4) + "..." + data.id.substr(-2);
             problem.innerHTML = data.problem_prefix + data.problem_id;
             if(data.status == "judged") {
                 switch(data.result) {
