@@ -75,11 +75,19 @@
         if(!location.key.p) location.href = "./";
         config().then(j => {
             if(!j) location.href = "./";
-            problem().then(show_porblem);
+            var problem_string = location.key.p, prefix = "", id = "";
+            for(var i = 0; i < problem_string.length; i++) {
+                if(['0','1','2','3','4','5','6','7','8','9'].includes(problem_string[i])) {
+                    prefix = problem_string.substr(0, i);
+                    id = problem_string.substr(i);
+                    break;
+                }
+            }
+            problem(prefix, id).then(show_porblem);
         });
         
         function show_porblem(prob) {
-            
+            document.title = prob.Prefix + prob.No + ". " + prob.Name;
         }
     </script>
 </body>
