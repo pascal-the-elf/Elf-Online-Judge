@@ -34,3 +34,9 @@ async function list_problem() {
         .then(r=>r.json());
     return list;
 }
+
+async function problem(prefix, id) {
+    var p = await fetch("https://raw.githubusercontent.com/"+judge.database.owner+"/"+judge.database.database+"/master/problems/"+prefix+"/"+id+"/problem.json")
+        .then(r=>r.json());
+    return p;
+}
