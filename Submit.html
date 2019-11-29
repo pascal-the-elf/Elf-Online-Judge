@@ -136,6 +136,7 @@
                 body: JSON.stringify(data)
             }).then(r => r.json()).then(() => {location.href="./Status"});
             setTimeout(() => {document.getElementById("msg_success").hidden = false;}, 800);
+            setTimeout(() => {location.href="./Status"}, 4000);
         }
         function read_source_code(file) {
             reader(file)
