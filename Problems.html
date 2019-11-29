@@ -40,14 +40,43 @@
             </form>
         </div>
     </nav>
+    
+    <div id="container" style="display: flex;flex-direction: column;justify-items: center;align-items: center;">
+        
+    </div>
+    
     <script src="api.js"></script>
     <script>
         var init = function() {
             list_problem()
                 .then(show_list);
         };
-        function show_list() {
-            
+        function show_list(probs) {
+            for(prefix in probs) {
+                let box = document.createElement("div");
+                let body = document.createElement("div");
+                let title = document.createElement("h4");
+                let table = document.createElement("table");
+                box.classList.add("card", "border-secondary", "mb-3");
+                box.style.width: "90vw";
+                body.classList.add("card-body");
+                title.classList.add("card-title");
+                title.innerHTML = prefix;
+                for(id in probs[prefix]) {
+                    let tr = document.createElement("tr");
+                    let td = document.createElement("td");
+                    let a = document.createElement("a");
+                    a.href = "Problem?p="+prefix+id;
+                    a.innerHTML = prefix+id+". "+probs[prefix][id].name;
+                    td.appendChild(a);
+                    tr.appendChild(td);
+                    table.appendChild(tr);
+                }
+                body.appendChild(title);
+                body.appendChild(table);
+                box.appendChild(body);
+                document.getElementById("container").appendChild(box);
+            }
         }
     </script>
 </body>
