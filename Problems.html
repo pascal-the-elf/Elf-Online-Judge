@@ -47,10 +47,9 @@
     
     <script src="api.js"></script>
     <script>
-        var init = function() {
-            list_problem()
-                .then(show_list);
-        };
+        config().then(() => {
+            list_problem().then(show_list);
+        });
         function show_list(probs) {
             for(prefix in probs) {
                 let box = document.createElement("div");
