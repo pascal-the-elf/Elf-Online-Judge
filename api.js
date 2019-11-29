@@ -1,4 +1,4 @@
-if(!init) init = function() {};
+if(init == undefined || typeof init != "function") init = function() {};
 // config().then(init).catch(console.error);
 
 function ls(key = null, val = null) {
