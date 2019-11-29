@@ -73,7 +73,14 @@
             window.location.key = DataInURL;
         })();
         if(!location.key.p) location.href = "./";
+        config().then(j => {
+            if(!j) location.href = "./";
+            problem().then(show_porblem);
+        });
         
+        function show_porblem(prob) {
+            
+        }
     </script>
 </body>
 </html>
