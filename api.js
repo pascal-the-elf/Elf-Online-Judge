@@ -45,8 +45,13 @@ async function list_problem() {
 }
 
 async function problem(prefix, id) {
-    var p = await fetch("https://raw.githubusercontent.com/"+judge.database.owner+"/"+judge.database.database+"/master/problems/"+prefix+"/"+id+"/problem.json")
-        .then(r=>r.json());
+    var p;
+    if(should_cache("problem_"+prefix+id)) {
+        p = await fetch("https://raw.githubusercontent.com/"+judge.database.owner+"/"+judge.database.database+"/master/problems/"+prefix+"/"+id+"/problem.json")
+            .then(r=>r.json());
+        update_cache("problem_"+prefix+id, p);
+    } else
+        p = ls("cache")["problem_"+prefix+id];
     return p;
 }
 
