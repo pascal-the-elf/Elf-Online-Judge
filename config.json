@@ -2,5 +2,8 @@
   "database": {
     "owner": "pascal-the-elf",
     "database": "Github-Judge-Database"
+  },
+  "cycle": {
+    "time": 3600000
   }
 }
