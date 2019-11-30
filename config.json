@@ -4,6 +4,6 @@
     "database": "Github-Judge-Database"
   },
   "cycle": {
-    "time": 3600000
+    "interval": 3600000
   }
 }
