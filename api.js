@@ -20,12 +20,16 @@ function ls(key = null, val = null) {
 
 async function config(conf = "./config.json") {
     let success = 1;
-    window.judge = await fetch(conf)
-        .then(r=>r.json())
-        .catch(e=>{
-            console.error(e);
-            success = 0;
-        });
+    if(should_cache("config")) {
+        window.judge = await fetch(conf)
+            .then(r=>r.json())
+            .catch(e=>{
+                console.error(e);
+                success = 0;
+            });
+        update_cache("config", window.judge);
+    } else
+        window.judge = ls("cache").config;
     return success;
 }
 
