@@ -40,3 +40,10 @@ async function problem(prefix, id) {
         .then(r=>r.json());
     return p;
 }
+
+function should_cache(type) {
+    if(!ls("cache_control")) ls("cache_control", {});
+    var c = ls("cache_control");
+    if(!c[type]) c[type] = 0;
+    return ((Date.now()-c[type])>judge.cycle.interval);
+}
