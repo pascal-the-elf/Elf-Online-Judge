@@ -61,6 +61,7 @@
                 <pre id="Output" style="margin: 4px;"></pre>
             </div>
         </div>
+        <a id="submit" class="btn btn-primary" target="_blank">Submit</a>
     </div>
     
     <script src="api.js"></script>
@@ -110,6 +111,7 @@
             document.getElementById("Description").innerHTML = prob.Description;
             document.getElementById("Input").innerHTML = prob.Input;
             document.getElementById("Output").innerHTML = prob.Output;
+            document.getElementById("submit").href = prob.Prefix+prob.No;
         }
     </script>
 </body>
