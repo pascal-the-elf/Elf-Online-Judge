@@ -50,7 +50,7 @@ function should_cache(type) {
     if(!ls("cache_control")) ls("cache_control", {});
     var c = ls("cache_control");
     if(!c[type]) c[type] = 0;
-    return ((Date.now()-c[type])>judge.cycle.interval);
+    return ((Date.now()-c[type])>(judge?judge.cycle.interval:60000));
 }
 function update_cache(type, value) {
     var c = ls("cache"), cc = ls("cache_control");
