@@ -42,8 +42,16 @@ async function problem(prefix, id) {
 }
 
 function should_cache(type) {
+    if(!ls("cache")) ls("cache", {});
     if(!ls("cache_control")) ls("cache_control", {});
     var c = ls("cache_control");
     if(!c[type]) c[type] = 0;
     return ((Date.now()-c[type])>judge.cycle.interval);
+}
+function update_cache(type, value) {
+    var c = ls("cache"), cc = ls("cache_control");
+    c[type] = value;
+    cc[type] = Date.now();
+    ls("cache", c);
+    ls("cache_control", cc);
 }
