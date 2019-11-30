@@ -42,7 +42,16 @@
     </nav>
     <br>
     <div id="container" style="">
-        
+        <h2 id="Name"></h2>
+        <div class="card border-light mb-3">
+            <div class="card-body">
+                <h4 class="card-title">Description</h4>
+                <p id="Description" class="card-text"></p>
+            </div>
+        </div>
+        <div id="samples">
+            
+        </div>
     </div>
     
     <script src="api.js"></script>
@@ -88,6 +97,8 @@
         
         function show_porblem(prob) {
             document.title = prob.Prefix + prob.No + ". " + prob.Name;
+            document.getElementById("Name").innerHTML = prob.Name;
+            document.getElementById("Description").innerHTML = prob.Description;
         }
     </script>
 </body>
