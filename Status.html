@@ -82,7 +82,7 @@
         </table>
     </div>
     <script>
-        submissions.orderBy("timestamp", "desc").limit(10).onSnapshot(qs => {
+        submissions.where("database_owner", "==", "pascal-the-elf").where("database_repo", "==", "Github-Judge-Database").orderBy("timestamp", "desc").limit(10).onSnapshot(qs => {
             document.getElementById("submissions").innerHTML = "";
             qs.forEach(doc => {
                 let data = doc.data();
