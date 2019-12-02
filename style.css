@@ -1,6 +1,10 @@
 body {
     overflow: overlay;
+    font-family: Verdana, "微軟正黑體";
 }
 body::-webkit-scrollbar {
     display: none;
+}
+p, span, a {
+    font-family: Verdana, "微軟正黑體";
 }
